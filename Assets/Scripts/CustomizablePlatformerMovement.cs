@@ -91,16 +91,20 @@ public class CustomizablePlatformerMovement : MonoBehaviour
         // animator.SetFloat("HorizontalMovement", moveInput.x)
         if (velocity.x != 0)
         {
-            
+            animator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            animator.SetBool("IsRunning", false);
         }
         
         // Flip sprite according to direction (if a sprite renderer has been assigned)
         if (spriteRenderer)
         {
             if (moveInput.x > 0.01f)
-                spriteRenderer.flipX = false;
-            else if (moveInput.x < -0.01f)
                 spriteRenderer.flipX = true;
+            else if (moveInput.x < -0.01f)
+                spriteRenderer.flipX = false;
         }
     }
 
